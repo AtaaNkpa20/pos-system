@@ -1,0 +1,126 @@
+/* src/components/ManageUsers.css */
+
+.manage-users-container {
+  padding: 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.manage-users-container img {
+  width: 250px;
+  height: 170px;
+}
+
+.manage-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #57b44a;
+  padding: 0;
+  margin: 0;
+  color: white;
+  width: 200px;
+  height: 100vh;
+  flex-direction: column;
+  position: fixed;
+}
+
+.manage-users-header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.manage-users-nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #57b44a;
+  padding-top: 10px;
+}
+
+.manage-users-nav .nav-item {
+  margin: 10px 0;
+}
+
+.manage-users-nav button {
+  background-color: #57b44a;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
+  color: #fff;
+}
+
+.manage-users-nav button:hover {
+  color: #0ae641;
+  background-color: #062b02;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.manage-users-nav p {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: auto;
+}
+
+.manage-users-content {
+  background: #e0e0e0;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  flex-direction: column;
+}
+
+.manage-users-content button {
+  background-color: #154e0d;
+  width: 120px;
+  font-size: 13px;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-users-content button:hover {
+  background-color: #0ae641;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.user-form .form-group {
+  margin-bottom: 10px;
+}
+
+.user-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.user-form input {
+  width: 250px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

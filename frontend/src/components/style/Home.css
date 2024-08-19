@@ -1,0 +1,191 @@
+/* src/components/Home.css */
+
+.home-container {
+  padding: 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.home-container img {
+  width: 250px;
+  height: 170px;
+}
+
+.icons {
+  width: 200px;
+}
+
+.icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #57b44a;
+  padding: 0;
+  margin: 0;
+  color: white;
+  width: 200px;
+  height: 100vh;
+  flex-direction: column;
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+
+.home-header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.home-nav {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.home-nav button {
+  background-color: #57b44a;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  color: #fff;
+}
+
+.home-nav p {
+  font-size: 14px;
+}
+
+.home-nav button:hover {
+  color: #0ae641;
+  background-color: #062b02;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-content {
+  background: #e0e0e0;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  margin-left: 10px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.top-header {
+  background-color: #a8a6a6;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+}
+
+.nav-item img {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+.agric-med {
+  background: rgb(241, 238, 238);
+  width: 500px;
+  border: 1px solid #0c0c0c;
+}
+
+.agric-med h3 {
+  margin-left: 10px;
+}
+
+.agric-med input {
+  width: 50px;
+  height: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.agric-med li {
+  border-top: double;
+}
+
+.agric-med button {
+  width: 75px;
+  height: 30px;
+}
+
+.select-med {
+  background: #57b44a;
+  width: 500px;
+  border: 1px solid #0c0c0c;
+}
+
+.select-med button {
+  font-size: 14px;
+  width: 60px;
+  height: fit-content;
+  background-color: #062b02;
+  margin-left: 20px;
+}
+
+.select-med button:hover {
+  background-color: #0ae641;
+  color: #062b02;
+}
+
+.complete {
+  background: rgb(241, 238, 238);
+}
+
+.complete button {
+  font-size: 14px;
+  width: 50px;
+  border-radius: 20px;
+  height: fit-content;
+  background-color: #062b02;
+}
+
+.discount-input {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.discount-input label {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.discount-input input {
+  width: 80px;
+  font-size: 14px;
+}
+

@@ -1,0 +1,115 @@
+/* src/components/Login.css */
+
+.login-container {
+  background-image: url('../../assets/farmers.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  }
+  
+  .login-box {
+    background-color: #b4f0bc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 350px;
+  }
+  
+  .login-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .login-box .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .login-box .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  .login-box .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .login-box .input-group input:focus {
+    border-color: #61dafb;
+    outline: none;
+  }
+  
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #154e0d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .login-box button:hover {
+    background: #57b44a;
+  }
+  
+  .login-box .error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .error {
+    color: red;
+    margin-bottom: 15px;
+  }
+  
+  .login-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .login-footer a {
+    color: #57b44a;
+    text-decoration: none;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+    color: #055519;
+  }
+
+  .signin-footer .google-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #db4437;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .signin-footer .google-button:hover {
+    background-color: #c23321;
+  }
+.loginbox .password {
+  display: flex;
+  flex-direction: row;
+}
+.password-group button {
+  width: 100px;
+  
+}

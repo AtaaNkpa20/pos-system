@@ -1,0 +1,83 @@
+/* src/components/Admin.css */
+
+.profit-container {
+padding: 0px;
+background-color: #f9f9f9;
+min-height: 100vh;
+display: flex;
+flex-direction: row;
+}
+
+
+.profit-container img {
+  width: 250px;
+  height: 170px;
+}
+
+.profit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #57b44a;
+  padding: 0;
+  margin: 0vh;
+  color: white;
+  width: 200px;
+  height: 100vh;
+  flex-direction: column;
+  position: fixed;
+}
+
+.profit-header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.profit-nav {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  background-color: #57b44a;
+}
+
+.profit-nav button {
+  background-color: #57b44a;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  color: #fff;
+}
+
+.profit-nav p {
+  font-size: 14px;
+}
+
+.profit-nav button:hover {
+  color: #0ae641;
+  background-color: #062b02;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profit-content {
+  background: #e0e0e0;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: 100%;
+  margin-left: 200px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+}
+
+.nav-item img {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
