@@ -75,6 +75,7 @@
         margin: 10px 10px;
         display: flex;
         flex-direction: column;
+        color: #fff;
     }
 
     .receipt-content button:hover {

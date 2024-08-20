@@ -1,7 +1,7 @@
 .overview-container {
     padding: 0px;
     margin: 0px;
-    background-image: url('../../assets/green-field.jpg');
+    background-image: url("../../assets/green-field.jpg");
     height: 100vh;
     width: 100%;
     background-size: cover;
@@ -19,12 +19,14 @@
     text-align: center;
     align-content: center;
     justify-content: center;
-    text-decoration: none;
     color: #fff;
+    border: none;
+    cursor: pointer;
     font-size: 20px;
     width: 100px;
     background-color: #154e0d;
     margin: 20px;
+    border-radius: 5px;
 }
 
 .overview-container button:hover {

@@ -126,7 +126,7 @@
 
 .agric-med input {
   width: 50px;
-  height: 5px;
+  height: 15px;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 5px;
@@ -152,8 +152,10 @@
   font-size: 14px;
   width: 60px;
   height: fit-content;
-  background-color: #062b02;
+  background-color: #051b03;
   margin-left: 20px;
+  color: #fff;
+  border: none;
 }
 
 .select-med button:hover {

@@ -10,7 +10,6 @@ import reciept from '../assets/reciept.png';
 import group from '../assets/group.png';
 import help from '../assets/help.png';
 import logout from '../assets/logout.png';
-import list from '../assets/list.png';
 
 const Home = () => {
   const [medicines, setMedicines] = useState([]);
@@ -172,18 +171,16 @@ const Home = () => {
                   <th>Name</th>
                   <th>Quantity</th>
                   <th>Size</th>
-                  <th>Stock</th>
                   <th>Total</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(selectedMedicines).map(([name, { quantity, size, stock, price }], index) => (
+                {Object.entries(selectedMedicines).map(([name, { quantity, size, price }], index) => (
                   <tr key={index} className="selected-medicine-item">
                     <td>{name}</td>
                     <td>{quantity}</td>
                     <td>{size}</td>
-                    <td>{stock}</td>
                     <td>₵{(quantity * price).toFixed(2)}</td>
                     <td>
                       <button onClick={() => handleDeleteSelected(name)}>Delete</button>
@@ -205,7 +202,7 @@ const Home = () => {
                   onChange={(e) => setDiscount(parseFloat(e.target.value))}
                 />
               </div>
-              <button onClick={handleCompleteSale}>Complete Sale</button>
+              <button onClick={handleCompleteSale}>Sale</button>
             </div>
           </div>
         </main>
