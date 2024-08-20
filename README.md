@@ -119,15 +119,30 @@ The POS (Point of Sale) System is designed to manage inventory, process sales, a
 
 ```bash
 pos-system/
-├── public/
-├── src/
-│   ├── components/
-│   ├── context/
-│   ├── pages/
-│   ├── App.js
-│   ├── index.js
-│   ├── routes.js
-│   └── styles/
-├── .gitignore
-├── package.json
-└── README.md
+├── backend/                        # Backend code
+│   ├── middleware/                 # Express middleware functions
+│   ├── models/                     # Database models
+│   ├── routes/                     # API route definitions
+│   ├── services/                   # Business logic and services
+│   ├── tests/                      # Test cases for backend code
+│   ├── node_modules/               # Node.js dependencies (auto-generated)
+│   ├── .env                        # Environment variables (not included in version control)
+│   ├── package.json                # Backend dependencies and scripts
+│   ├── package-lock.json           # Exact versions of backend dependencies
+│   └── server.js                   # Entry point for the backend server
+│
+├── frontend/                       # Frontend code
+│   ├── public/                     # Publicly accessible files like HTML and images
+│   ├── src/  
+│   │   ├── assets/                 # Images for the frontend
+│   │   ├── components/             # React components               
+│   │   ├── styles/                 # Styling files (CSS/SCSS)
+│   │   ├── App.js                  # Main React component, sets up routes
+│   │   └── routes.js               # Frontend route definitions
+│   ├── node_modules/               # Node.js dependencies for the frontend (auto-generated)
+│   ├── package.json                # Frontend dependencies and scripts
+│   ├── package-lock.json           # Exact versions of frontend dependencies
+│   └── README.md                   # Project overview and documentation
+│
+├── .gitignore                      # Specifies files/directories to ignore in Git
+└── README.md                       # Main project README with setup instructions
