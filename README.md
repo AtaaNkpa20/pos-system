@@ -50,7 +50,7 @@ The POS (Point of Sale) System is designed to manage inventory, process sales, a
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/pos-system.git
+    git clone https://github.com/AtaaNkpa20/pos-system.git
     ```
 
 2. Navigate to the project directory:
