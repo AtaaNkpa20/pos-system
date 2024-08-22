@@ -1,4 +1,3 @@
-// src/components/Home.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style/Overview.css';
@@ -14,9 +13,7 @@ const Overview = () => {
       <main className="overview-content">
       </main>
 
-        <footer>
-            <p>© 2024 POS System. All rights reserved.</p>
-        </footer>
+      <p>© 2024 POS System. All rights reserved.</p>
 
     </div>
   );

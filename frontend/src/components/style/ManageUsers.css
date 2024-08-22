@@ -1,7 +1,7 @@
 /* src/components/ManageUsers.css */
 
 .manage-users-container {
-  padding: 0;
+  padding: 0px;
   background-color: #f9f9f9;
   min-height: 100vh;
   display: flex;
@@ -18,13 +18,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: #57b44a;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   color: white;
   width: 200px;
   height: 100vh;
   flex-direction: column;
-  position: fixed;
+  border: 1px solid #0a3102fd;
 }
 
 .manage-users-header h1 {
@@ -36,12 +36,9 @@
   display: flex;
   flex-direction: column;
   background-color: #57b44a;
-  padding-top: 10px;
+  gap: 10px;
 }
 
-.manage-users-nav .nav-item {
-  margin: 10px 0;
-}
 
 .manage-users-nav button {
   background-color: #57b44a;
@@ -61,18 +58,13 @@
 
 .manage-users-nav p {
   font-size: 14px;
-  color: #fff;
-  text-align: center;
-  margin-top: auto;
 }
 
 .manage-users-content {
-  background: #e0e0e0;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  width: calc(100% - 200px);
-  margin-left: 200px;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -86,6 +78,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 5px;
 }
 
 .manage-users-content button:hover {

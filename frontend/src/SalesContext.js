@@ -1,18 +1,35 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
-// Create the SalesContext
 export const SalesContext = createContext();
 
 const SalesProvider = ({ children }) => {
-  const [sales, setSales] = useState(() => {
-    const savedSales = localStorage.getItem('sales');
-    return savedSales ? JSON.parse(savedSales) : [];
-  });
+  const [sales, setSales] = useState([]);
 
-  const addSale = (newSale) => {
-    const updatedSales = [...sales, { ...newSale, timestamp: new Date().toLocaleString() }];
-    setSales(updatedSales);
-    localStorage.setItem('sales', JSON.stringify(updatedSales));
+  useEffect(() => {
+    // Fetch sales from the database when the component mounts
+    const fetchSales = async () => {
+      try {
+        const response = await axios.get('/api/sales');
+        setSales(response.data);
+      } catch (error) {
+        console.error('Error fetching sales:', error);
+      }
+    };
+
+    fetchSales();
+  }, []);
+
+  const addSale = async (newSale) => {
+    try {
+      // Save sale to the database
+      const response = await axios.post('/api/sales', newSale);
+      
+      // Update local state with the new sale
+      setSales(prevSales => [...prevSales, response.data]);
+    } catch (error) {
+      console.error('Error saving sale:', error);
+    }
   };
 
   return (

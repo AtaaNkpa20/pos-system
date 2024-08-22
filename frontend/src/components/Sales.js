@@ -6,7 +6,7 @@ import logo from '../assets/Free-Logo.png';
 import home from '../assets/home.png';
 import stocks from '../assets/stocks.png';
 import coupon from '../assets/coupon.png';
-import reciept from '../assets/reciept.png';
+import receipt from '../assets/reciept.png'; // Fixed spelling of 'receipt'
 import group from '../assets/group.png';
 import help from '../assets/help.png';
 import logout from '../assets/logout.png';
@@ -18,7 +18,7 @@ const Sales = () => {
   const [searchDate, setSearchDate] = useState('');
 
   useEffect(() => {
-    // Fetch sales data when component mounts
+    // Fetch sales data when component mounts or searchDate changes
     const fetchSales = async () => {
       try {
         const response = await fetch(`/api/sales?date=${searchDate}`);
@@ -56,7 +56,7 @@ const Sales = () => {
             <button>Sales</button>
           </div>
           <div className="nav-item" onClick={() => handleNavigate('/issuereceipt')}>
-            <img src={reciept} alt="Receipt Icon" className="nav-icon" />
+            <img src={receipt} alt="Receipt Icon" className="nav-icon" />
             <button>Issue Receipt</button>
           </div>
           <div className="nav-item" onClick={() => handleNavigate('/customers')}>
@@ -101,7 +101,7 @@ const Sales = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {sale.items ? (
+                    {sale.items && sale.items.length > 0 ? (
                       sale.items.map((item, idx) => (
                         <tr key={idx}>
                           <td>{item.name}</td>
