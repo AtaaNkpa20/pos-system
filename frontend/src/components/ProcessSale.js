@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
-import { SalesContext } from '../SalesContext'; // Import the SalesContext
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { SalesContext } from '../SalesContext';
 import './style/Sales.css';
 import logo from '../assets/Free-Logo.png';
 import stocks from '../assets/stocks.png';
@@ -9,26 +9,48 @@ import profit from '../assets/profit.png';
 import group from '../assets/group.png';
 import logout from '../assets/logout.png';
 
-const ProcessSale = () => {
+const Sales = () => {
   const navigate = useNavigate();
-  const { sales, setSales } = useContext(SalesContext); // Access sales and setSales from context
-  const [searchDate, setSearchDate] = useState('');
+  const { sales } = useContext(SalesContext);
 
-  useEffect(() => {
-    // Fetch sales data when component mounts
-    const fetchSales = async () => {
-      try {
-        const response = await fetch(`/api/sales?date=${searchDate}`);
-        const data = await response.json();
-        setSales(data);
-      } catch (error) {
-        console.error('Failed to fetch sales:', error);
-      }
-    };
+  const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
 
-    fetchSales();
-  }, [searchDate, setSales]); // Depend on searchDate to refetch data
+  const currentDate = getCurrentDate();
+  const dailySales = sales[currentDate] || [];
 
+  const handleDownload = () => {
+    if (dailySales.length === 0) {
+      alert('No sales data to download.');
+      return;
+    }
+
+    // Create CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    
+    // Add header row
+    csvContent += "Name,Size,Quantity,Price,Total\n";
+    
+    dailySales.forEach((sale, index) => {
+      csvContent += `Sale ${index + 1} - ${sale.timestamp}\n`;
+      Object.entries(sale).forEach(([name, { quantity, size, price }]) => {
+        if (name !== 'timestamp') {
+          csvContent += `${name},${size},${quantity},₵${parseFloat(price).toFixed(2)},₵${(quantity * parseFloat(price)).toFixed(2)}\n`;
+        }
+      });
+      csvContent += "\n";
+    });
+    
+    // Create a download link and trigger download
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `sales_report_${currentDate}.csv`);
+    document.body.appendChild(link); // Required for Firefox
+    link.click();
+  };
 
   return (
     <div className="sales-container">
@@ -55,23 +77,17 @@ const ProcessSale = () => {
             <img src={logout} alt="Logout Icon" className="nav-icon" />
             <button>Logout</button>
           </div>
-            <p>© 2024 POS System. All rights reserved.</p>
+          <p>© 2024 POS System. All rights reserved.</p>
         </nav>
       </header>
       <main className="sales-content">
-        <h3>Sales</h3>
-        <div className="search-bar">
-          <input
-            type="date"
-            value={searchDate}
-            onChange={(e) => setSearchDate(e.target.value)}
-          />
-        </div>
-        {sales.length === 0 ? (
-          <p>No sales found for the selected date.</p>
+        <h3>Sales for {currentDate}</h3>
+        <button onClick={handleDownload} className="download-button">Download Sales</button>
+        {dailySales.length === 0 ? (
+          <p>No sales yet.</p>
         ) : (
           <ul className="sales-list">
-            {sales.map((sale, index) => (
+            {dailySales.map((sale, index) => (
               <li key={index} className="sale-item">
                 <h4>Sale {index + 1} - {sale.timestamp}</h4>
                 <table className="sale-table">
@@ -85,21 +101,17 @@ const ProcessSale = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {sale.items ? (
-                      sale.items.map((item, idx) => (
+                    {Object.entries(sale).map(([name, { quantity, size, price }], idx) => (
+                      name !== 'timestamp' && (
                         <tr key={idx}>
-                          <td>{item.name}</td>
-                          <td>{item.size}</td>
-                          <td>{item.quantity}</td>
-                          <td>₵{parseFloat(item.price).toFixed(2)}</td>
-                          <td>₵{(item.quantity * parseFloat(item.price)).toFixed(2)}</td>
+                          <td>{name}</td>
+                          <td>{size}</td>
+                          <td>{quantity}</td>
+                          <td>₵{parseFloat(price).toFixed(2)}</td>
+                          <td>₵{(quantity * parseFloat(price)).toFixed(2)}</td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="5">No items available</td>
-                      </tr>
-                    )}
+                      )
+                    ))}
                   </tbody>
                 </table>
               </li>
@@ -111,4 +123,4 @@ const ProcessSale = () => {
   );
 };
 
-export default ProcessSale;
+export default Sales;

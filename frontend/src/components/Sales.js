@@ -1,36 +1,31 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { SalesContext } from '../SalesContext'; // Import the SalesContext
+import { SalesContext } from '../SalesContext';
 import './style/Sales.css';
 import logo from '../assets/Free-Logo.png';
 import home from '../assets/home.png';
 import stocks from '../assets/stocks.png';
 import coupon from '../assets/coupon.png';
-import receipt from '../assets/reciept.png'; // Fixed spelling of 'receipt'
+import reciept from '../assets/reciept.png';
 import group from '../assets/group.png';
 import help from '../assets/help.png';
 import logout from '../assets/logout.png';
 
 const Sales = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get current location
-  const { sales, setSales } = useContext(SalesContext); // Access sales and setSales from context
-  const [searchDate, setSearchDate] = useState('');
+  const location = useLocation();
+  const { sales } = useContext(SalesContext);
 
-  useEffect(() => {
-    // Fetch sales data when component mounts or searchDate changes
-    const fetchSales = async () => {
-      try {
-        const response = await fetch(`/api/sales?date=${searchDate}`);
-        const data = await response.json();
-        setSales(data);
-      } catch (error) {
-        console.error('Failed to fetch sales:', error);
-      }
-    };
+  const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
 
-    fetchSales();
-  }, [searchDate, setSales]); // Depend on searchDate to refetch data
+  const currentDate = getCurrentDate();
+  const dailySales = sales[currentDate] || [];
+
+  console.log('Current date:', currentDate);
+  console.log('Daily sales data:', dailySales);
 
   const handleNavigate = (path) => {
     if (location.pathname !== path) {
@@ -56,7 +51,7 @@ const Sales = () => {
             <button>Sales</button>
           </div>
           <div className="nav-item" onClick={() => handleNavigate('/issuereceipt')}>
-            <img src={receipt} alt="Receipt Icon" className="nav-icon" />
+            <img src={reciept} alt="Receipt Icon" className="nav-icon" />
             <button>Issue Receipt</button>
           </div>
           <div className="nav-item" onClick={() => handleNavigate('/customers')}>
@@ -75,19 +70,12 @@ const Sales = () => {
         </nav>
       </header>
       <main className="sales-content">
-        <h3>Sales</h3>
-        <div className="search-bar">
-          <input
-            type="date"
-            value={searchDate}
-            onChange={(e) => setSearchDate(e.target.value)}
-          />
-        </div>
-        {sales.length === 0 ? (
-          <p>No sales found for the selected date.</p>
+        <h3>Sales for {currentDate}</h3>
+        {dailySales.length === 0 ? (
+          <p>No sales yet.</p>
         ) : (
           <ul className="sales-list">
-            {sales.map((sale, index) => (
+            {dailySales.map((sale, index) => (
               <li key={index} className="sale-item">
                 <h4>Sale {index + 1} - {sale.timestamp}</h4>
                 <table className="sale-table">
@@ -101,21 +89,17 @@ const Sales = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {sale.items && sale.items.length > 0 ? (
-                      sale.items.map((item, idx) => (
+                    {Object.entries(sale).map(([name, { quantity, size, price }], idx) => (
+                      name !== 'timestamp' && (
                         <tr key={idx}>
-                          <td>{item.name}</td>
-                          <td>{item.size}</td>
-                          <td>{item.quantity}</td>
-                          <td>₵{parseFloat(item.price).toFixed(2)}</td>
-                          <td>₵{(item.quantity * parseFloat(item.price)).toFixed(2)}</td>
+                          <td>{name}</td>
+                          <td>{size}</td>
+                          <td>{quantity}</td>
+                          <td>₵{parseFloat(price).toFixed(2)}</td>
+                          <td>₵{(quantity * parseFloat(price)).toFixed(2)}</td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="5">No items available</td>
-                      </tr>
-                    )}
+                      )
+                    ))}
                   </tbody>
                 </table>
               </li>
