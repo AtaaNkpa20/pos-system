@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -22,7 +21,15 @@ mongoose.connect(process.env.MONGO_URI, {
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Routes
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
+// Root route
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+// API Routes
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
