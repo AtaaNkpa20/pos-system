@@ -1,12 +1,11 @@
-// routes/salesRoutes.js
-const express = require('express');
-const { addSale } = require('../services/salesService'); // Ensure correct path
-const Sale = require('../models/Sale'); // Ensure correct path
+ const express = require('express');
+ const { addSale } = require('../services/salesService'); 
+const Sale = require('../models/Sale'); 
 
-const router = express.Router();
+ const router = express.Router();
 
-// Add Sale
-router.post('/', async (req, res) => {
+
+ router.post('/', async (req, res) => {
   try {
     const newSale = req.body;
     await addSale(newSale);
@@ -30,4 +29,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router; 
